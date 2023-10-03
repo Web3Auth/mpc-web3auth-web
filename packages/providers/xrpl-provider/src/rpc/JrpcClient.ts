@@ -8,7 +8,7 @@ import {
   JRPCResponse,
   mergeMiddleware,
 } from "@toruslabs/openlogin-jrpc";
-import { CustomChainConfig } from "@web3auth/base";
+import { CustomChainConfig } from "@web3auth-mpc/base";
 
 import { RPC_METHODS } from "./xrplRpcMiddlewares";
 

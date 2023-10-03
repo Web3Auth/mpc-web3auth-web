@@ -2,10 +2,10 @@
   "extends": "@toruslabs/config/tsconfig.default.json",
   "compilerOptions": {
     "paths": {
-      "@web3auth/*-adapter": ["./packages/adapters/*-adapter"],
-      "@web3auth/*-provider": ["./packages/providers/*-provider"],
-      "@web3auth/*": ["./packages/*"],
-      "@web3auth/*-plugin": ["./packages/plugins/*-plugin"]
+      "@web3auth-mpc/*-adapter": ["./packages/adapters/*-adapter"],
+      "@web3auth-mpc/*-provider": ["./packages/providers/*-provider"],
+      "@web3auth-mpc/*": ["./packages/*"],
+      "@web3auth-mpc/*-plugin": ["./packages/plugins/*-plugin"]
     }
   }
 }

@@ -1,6 +1,6 @@
 import { randomId } from "@toruslabs/base-controllers";
 import { createAsyncMiddleware, JRPCMiddleware, JRPCRequest, mergeMiddleware } from "@toruslabs/openlogin-jrpc";
-import { CustomChainConfig } from "@web3auth/base";
+import { CustomChainConfig } from "@web3auth-mpc/base";
 import { SubmitResponse, Transaction } from "xrpl";
 
 export const RPC_METHODS = {

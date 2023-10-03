@@ -1,6 +1,6 @@
 import { rpcErrors } from "@metamask/rpc-errors";
 import { JRPCRequest } from "@toruslabs/openlogin-jrpc";
-import { CHAIN_NAMESPACES, CustomChainConfig } from "@web3auth/base";
+import { CHAIN_NAMESPACES, CustomChainConfig } from "@web3auth-mpc/base";
 import { generateSeed, sign } from "ripple-keypairs";
 // import { providerErrors, rpcErrors } from "@metamask/rpc-errors";
 import { Client, deriveAddress, SubmitResponse, Transaction, Wallet } from "xrpl";

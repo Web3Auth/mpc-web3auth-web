@@ -1,7 +1,7 @@
 # Web3Auth XRPL Provider
 
-[![npm version](https://img.shields.io/npm/v/@web3auth/xrpl-provider?label=%22%22)](https://www.npmjs.com/package/@web3auth/xrpl-provider/v/latest)
-[![minzip](https://img.shields.io/bundlephobia/minzip/@web3auth/xrpl-provider?label=%22%22)](https://bundlephobia.com/result?p=@web3auth/xrpl-provider@latest)
+[![npm version](https://img.shields.io/npm/v/@web3auth-mpc/xrpl-provider?label=%22%22)](https://www.npmjs.com/package/@web3auth-mpc/xrpl-provider/v/latest)
+[![minzip](https://img.shields.io/bundlephobia/minzip/@web3auth-mpc/xrpl-provider?label=%22%22)](https://bundlephobia.com/result?p=@web3auth-mpc/xrpl-provider@latest)
 
 > Web3Auth is where passwordless auth meets non-custodial key infrastructure for Web3 apps and wallets. By aggregating OAuth (Google, Twitter, Discord) logins, different wallets and innovative Multi Party Computation (MPC) - Web3Auth provides a seamless login experience to every user on your application.
 
@@ -23,14 +23,14 @@ Web3Auth XRPL Provider can be used to interact with wallet or connected EVM comp
 ## 🔗 Installation
 
 ```shell
-npm install --save @web3auth/xrpl-provider
+npm install --save @web3auth-mpc/xrpl-provider
 ```
 
 ## 🩹 Example
 
 ```ts
-import { XrplPrivateKeyProvider, getXRPLChainConfig } from "@web3auth/xrpl-provider";
-import type { SafeEventEmitterProvider } from "@web3auth/base";
+import { XrplPrivateKeyProvider, getXRPLChainConfig } from "@web3auth-mpc/xrpl-provider";
+import type { SafeEventEmitterProvider } from "@web3auth-mpc/base";
 const signMessage = async (provider: SafeEventEmitterProvider): Promise<string> => {
   const msg = "Hello world";
   const hexMsg = convertStringToHex(msg);
@@ -52,7 +52,7 @@ const signMessage = async (provider: SafeEventEmitterProvider): Promise<string> 
 })();
 ```
 
-Checkout the full example [here](https://github.com/Web3Auth/web3auth-web/demo/xrpl-react-app)
+Checkout the full example [here](https://github.com/Web3Auth/mpc-web3auth-web/demo/xrpl-react-app)
 
 ## 💬 Troubleshooting and Support
 

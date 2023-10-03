@@ -3,7 +3,7 @@
   "version": "2.1.9",
   "description": "wallet connect v2 adapter for web3auth",
   "keywords": [
-    "@web3auth/wallet-connect-v2-adapter",
+    "@web3auth-mpc/wallet-connect-v2-adapter",
     "web3auth",
     "multichainWallet",
     "blockchain",
