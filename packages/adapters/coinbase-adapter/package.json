@@ -1,6 +1,6 @@
 {
   "name": "@web3auth-mpc/coinbase-adapter",
-  "version": "2.1.9",
+  "version": "3.0.0",
   "description": "coinbase adapter for web3auth",
   "keywords": [
     "web3Auth/coinbase-adapter",
@@ -36,8 +36,8 @@
     "@coinbase/wallet-sdk": "^3.x"
   },
   "dependencies": {
-    "@web3auth-mpc/base": "^2.1.9",
-    "@web3auth-mpc/base-evm-adapter": "^2.1.9"
+    "@web3auth-mpc/base": "^3.0.0",
+    "@web3auth-mpc/base-evm-adapter": "^3.0.0"
   },
   "devDependencies": {
     "@coinbase/wallet-sdk": "^3.7.2"
