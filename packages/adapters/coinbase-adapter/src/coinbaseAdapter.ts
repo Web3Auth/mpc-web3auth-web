@@ -18,8 +18,8 @@ import {
   WALLET_ADAPTERS,
   WalletLoginError,
   Web3AuthError,
-} from "@web3auth/base";
-import { BaseEvmAdapter } from "@web3auth/base-evm-adapter";
+} from "@web3auth-mpc/base";
+import { BaseEvmAdapter } from "@web3auth-mpc/base-evm-adapter";
 
 export type CoinbaseWalletSDKOptions = ConstructorParameters<typeof CoinbaseWalletSDK>[0];
 

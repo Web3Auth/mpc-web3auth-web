@@ -11,7 +11,7 @@ This package provides main class for using default Web3Auth Modal. The package i
 
 Checkout the official [Web3Auth Documentation](https://web3auth.io/docs/sdk/web/web3auth/) to get started.
 
-## 💡 Features
+##  Features
 
 - Plug and Play, OAuth based Web3 Authentication Service
 - Fully decentralized, non-custodial key infrastructure

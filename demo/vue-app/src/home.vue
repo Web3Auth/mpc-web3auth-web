@@ -270,7 +270,7 @@ const defaultFormConfig = {
   chain: "ethereum",
   authMode: "hosted",
   selectedUiMode: "default",
-  openloginNetwork: "testnet",
+  openloginNetwork: "development",
   plugins: {
     torusWallet: true,
   },

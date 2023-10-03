@@ -1,14 +1,22 @@
 import type { OPENLOGIN_NETWORK_TYPE, OpenLoginOptions } from "@toruslabs/openlogin-utils";
-import { CHAIN_NAMESPACES, CustomChainConfig, getChainConfig, IAdapter, IBaseProvider, WALLET_ADAPTER_TYPE, WALLET_ADAPTERS } from "@web3auth/base";
-import { CommonPrivateKeyProvider } from "@web3auth/base-provider";
-import { UIConfig } from "@web3auth/ui";
+import {
+  CHAIN_NAMESPACES,
+  CustomChainConfig,
+  getChainConfig,
+  IAdapter,
+  IBaseProvider,
+  WALLET_ADAPTER_TYPE,
+  WALLET_ADAPTERS,
+} from "@web3auth-mpc/base";
+import { CommonPrivateKeyProvider } from "@web3auth-mpc/base-provider";
+import { UIConfig } from "@web3auth-mpc/ui";
 
 export async function getPrivateKeyProvider(chainConfig: CustomChainConfig): Promise<IBaseProvider<string>> {
   if (chainConfig.chainNamespace === CHAIN_NAMESPACES.SOLANA) {
-    const { SolanaPrivateKeyProvider } = await import("@web3auth/solana-provider");
+    const { SolanaPrivateKeyProvider } = await import("@web3auth-mpc/solana-provider");
     return new SolanaPrivateKeyProvider({ config: { chainConfig } });
   } else if (chainConfig.chainNamespace === CHAIN_NAMESPACES.EIP155) {
-    const { EthereumPrivateKeyProvider } = await import("@web3auth/ethereum-provider");
+    const { EthereumPrivateKeyProvider } = await import("@web3auth-mpc/ethereum-provider");
     return new EthereumPrivateKeyProvider({ config: { chainConfig } });
   } else if (chainConfig.chainNamespace === CHAIN_NAMESPACES.OTHER) {
     // Modal doesn't support ripple provider
@@ -35,23 +43,23 @@ export const getDefaultAdapterModule = async (params: {
     ...(customChainConfig || {}),
   };
   if (name === WALLET_ADAPTERS.TORUS_EVM) {
-    const { TorusWalletAdapter } = await import("@web3auth/torus-evm-adapter");
+    const { TorusWalletAdapter } = await import("@web3auth-mpc/torus-evm-adapter");
     const adapter = new TorusWalletAdapter({ chainConfig: finalChainConfig, clientId, sessionTime, web3AuthNetwork });
     return adapter;
   } else if (name === WALLET_ADAPTERS.TORUS_SOLANA) {
-    const { SolanaWalletAdapter } = await import("@web3auth/torus-solana-adapter");
+    const { SolanaWalletAdapter } = await import("@web3auth-mpc/torus-solana-adapter");
     const adapter = new SolanaWalletAdapter({ chainConfig: finalChainConfig, clientId, sessionTime, web3AuthNetwork });
     return adapter;
   } else if (name === WALLET_ADAPTERS.METAMASK) {
-    const { MetamaskAdapter } = await import("@web3auth/metamask-adapter");
+    const { MetamaskAdapter } = await import("@web3auth-mpc/metamask-adapter");
     const adapter = new MetamaskAdapter({ chainConfig: finalChainConfig, clientId, sessionTime, web3AuthNetwork });
     return adapter;
   } else if (name === WALLET_ADAPTERS.PHANTOM) {
-    const { PhantomAdapter } = await import("@web3auth/phantom-adapter");
+    const { PhantomAdapter } = await import("@web3auth-mpc/phantom-adapter");
     const adapter = new PhantomAdapter({ chainConfig: finalChainConfig, clientId, sessionTime, web3AuthNetwork });
     return adapter;
   } else if (name === WALLET_ADAPTERS.WALLET_CONNECT_V2) {
-    const { WalletConnectV2Adapter } = await import("@web3auth/wallet-connect-v2-adapter");
+    const { WalletConnectV2Adapter } = await import("@web3auth-mpc/wallet-connect-v2-adapter");
     const adapter = new WalletConnectV2Adapter({
       chainConfig: finalChainConfig,
       clientId,
@@ -66,7 +74,7 @@ export const getDefaultAdapterModule = async (params: {
     });
     return adapter;
   } else if (name === WALLET_ADAPTERS.OPENLOGIN) {
-    const { OpenloginAdapter, getOpenloginDefaultOptions } = await import("@web3auth/openlogin-adapter");
+    const { OpenloginAdapter, getOpenloginDefaultOptions } = await import("@web3auth-mpc/openlogin-adapter");
 
     const privateKeyProvider: IBaseProvider<string> = await getPrivateKeyProvider(finalChainConfig);
 

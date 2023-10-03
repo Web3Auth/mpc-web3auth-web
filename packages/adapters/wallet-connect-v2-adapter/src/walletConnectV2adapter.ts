@@ -23,9 +23,9 @@ import {
   WalletLoginError,
   WalletOperationsError,
   Web3AuthError,
-} from "@web3auth/base";
-import { BaseEvmAdapter } from "@web3auth/base-evm-adapter";
-import { WalletConnectV2Provider } from "@web3auth/ethereum-provider";
+} from "@web3auth-mpc/base";
+import { BaseEvmAdapter } from "@web3auth-mpc/base-evm-adapter";
+import { WalletConnectV2Provider } from "@web3auth-mpc/ethereum-provider";
 import merge from "lodash.merge";
 
 import { getWalletConnectV2Settings, WALLET_CONNECT_EXTENSION_ADAPTERS } from "./config";

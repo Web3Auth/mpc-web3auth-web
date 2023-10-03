@@ -6,14 +6,27 @@ module.exports = {
   parser: "@typescript-eslint/parser",
   parserOptions: {
     sourceType: "module",
-    ecmaVersion: 11,
+    ecmaVersion: 2022,
     project: "./tsconfig.json",
   },
-  ignorePatterns: ["*.config.js", "*.d.ts", ".eslintrc.js"],
+  ignorePatterns: ["*.eslintrc.js", "*.config.js"],
+  rules: {
+    "@typescript-eslint/no-throw-literal": 0,
+    "no-case-declarations": 0,
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        js: "never",
+        jsx: "never",
+        ts: "never",
+        tsx: "never",
+      },
+    ],
+  },
   env: {
     es2020: true,
     browser: true,
     node: true,
-    mocha: true,
   },
 };

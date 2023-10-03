@@ -21,9 +21,9 @@ import {
   WalletInitializationError,
   WalletLoginError,
   Web3AuthError,
-} from "@web3auth/base";
-import { IPlugin, PLUGIN_NAMESPACES } from "@web3auth/base-plugin";
-import { CommonJRPCProvider } from "@web3auth/base-provider";
+} from "@web3auth-mpc/base";
+import { IPlugin, PLUGIN_NAMESPACES } from "@web3auth-mpc/base-plugin";
+import { CommonJRPCProvider } from "@web3auth-mpc/base-provider";
 
 export interface Web3AuthNoModalOptions {
   /**

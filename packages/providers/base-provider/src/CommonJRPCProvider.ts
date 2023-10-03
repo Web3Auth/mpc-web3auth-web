@@ -1,7 +1,7 @@
 import { providerErrors } from "@metamask/rpc-errors";
 import { createEventEmitterProxy } from "@toruslabs/base-controllers";
 import { JRPCEngine, providerFromEngine } from "@toruslabs/openlogin-jrpc";
-import { CustomChainConfig, SafeEventEmitterProvider } from "@web3auth/base";
+import { CustomChainConfig, SafeEventEmitterProvider } from "@web3auth-mpc/base";
 
 import { BaseProvider, BaseProviderConfig, BaseProviderState } from "./baseProvider";
 import { createJsonRpcClient } from "./jrpcClient";

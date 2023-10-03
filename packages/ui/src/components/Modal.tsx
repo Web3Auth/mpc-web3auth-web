@@ -1,6 +1,6 @@
 import type { SafeEventEmitter } from "@toruslabs/openlogin-jrpc";
 import { LOGIN_PROVIDER } from "@toruslabs/openlogin-utils";
-import { ADAPTER_NAMES, log } from "@web3auth/base";
+import { ADAPTER_NAMES, log } from "@web3auth-mpc/base";
 import cloneDeep from "lodash.clonedeep";
 import deepmerge from "lodash.merge";
 import { useCallback, useContext, useEffect, useMemo, useState } from "react";

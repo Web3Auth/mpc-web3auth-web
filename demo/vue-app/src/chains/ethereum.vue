@@ -31,18 +31,21 @@
 <script lang="ts">
 import { OPENLOGIN_NETWORK_TYPE } from "@toruslabs/openlogin-utils";
 import { ADAPTER_STATUS, CHAIN_NAMESPACES, CONNECTED_EVENT_DATA, CustomChainConfig, LoginMethodConfig } from "@web3auth/base";
-import { WALLET_ADAPTERS } from "@web3auth/base";
 // import { LOGIN_MODAL_EVENTS } from "@web3auth/ui";
 import { Web3Auth } from "@web3auth/modal";
 import { OpenloginAdapter } from "@web3auth/openlogin-adapter";
 import { TorusWalletConnectorPlugin } from "@web3auth/torus-wallet-connector-plugin";
 import { getWalletConnectV2Settings, WalletConnectV2Adapter } from "@web3auth/wallet-connect-v2-adapter";
+import { WALLET_ADAPTERS } from "@web3auth-mpc/base";
 import { defineComponent } from "vue";
 
 import Loader from "@/components/loader.vue";
 
 import config from "../config";
 import EthRpc from "../rpc/ethRpc.vue";
+
+const tssServerEndpoint = "https://swaraj-test-coordinator-1.k8.authnetwork.dev/tss";
+const tssImportURL = "https://cloudflare-ipfs.com/ipfs/QmWxSMacBkunyAcKkjuDTU9yCady62n3VGW2gcUEcHg6Vh";
 
 const ethChainConfig: Partial<CustomChainConfig> & Pick<CustomChainConfig, "chainNamespace"> = {
   chainNamespace: CHAIN_NAMESPACES.EIP155,
@@ -134,12 +137,64 @@ export default defineComponent({
           enableLogging: true,
           web3AuthNetwork: this.openloginNetwork,
         });
+
+        let getTSSData: () => Promise<{
+          tssShare: string;
+          signatures: string[];
+        }>;
+        const tssGetPublic = async () => {
+          if (!getTSSData) {
+            throw new Error("tssShare / sigs are undefined");
+          }
+          const { tssShare, signatures } = await getTSSData();
+          const pubKey = await getPublicKeyFromTSSShare(tssShare, signatures);
+          return Buffer.from(pubKey, "base64");
+        };
+        const clients: { client: Client; allocated: boolean }[] = [];
+        const tssSign = async (msgHash: Buffer) => {
+          for (let i = 0; i < clients.length; i++) {
+            const client = clients[i];
+            if (!client.allocated) {
+              client.allocated = true;
+              await client.client;
+              await tss.default(tssImportURL);
+              const { r, s, recoveryParam } = await client.client.sign(tss as any, Buffer.from(msgHash).toString("base64"), true, "", "keccak256");
+              return { v: recoveryParam + 27, r: Buffer.from(r.toString("hex"), "hex"), s: Buffer.from(s.toString("hex"), "hex") };
+            }
+          }
+          throw new Error("no available clients, please generate precomputes first");
+        };
+        const generatePrecompute = async (verifierName: string, verifierId: string) => {
+          if (!getTSSData) {
+            throw new Error("tssShare and signatures are not defined");
+          }
+          const { tssShare, signatures } = await getTSSData();
+          const pubKey = (await tssGetPublic()).toString("base64");
+          const client = await setupTSS(tssShare, pubKey, verifierName, verifierId);
+          await tss.default(tssImportURL);
+          client.precompute(tss as any);
+          await client.ready();
+          clients.push({ client, allocated: false });
+        };
+        (window as any).generatePrecompute = generatePrecompute;
         const openloginAdapter = new OpenloginAdapter({
+          loginSettings: {
+            mfaLevel: "mandatory",
+          },
+          tssSettings: {
+            useTSS: true,
+            tssGetPublic,
+            tssSign,
+            tssDataCallback: async (tssDataReader) => {
+              getTSSData = tssDataReader;
+            },
+          },
           adapterSettings: {
             network: this.openloginNetwork as OPENLOGIN_NETWORK_TYPE,
             clientId: config.clientId[this.openloginNetwork],
           },
         });
+        (window as any).openloginAdapter = openloginAdapter;
 
         // by default, web3auth modal uses wallet connect v1,
         // if you want to use wallet connect v2, configure wallet-connect-v2-adapter
@@ -148,7 +203,7 @@ export default defineComponent({
         const defaultWcSettings = await getWalletConnectV2Settings(
           ethChainConfig.chainNamespace,
           [parseInt(ethChainConfig.chainId, 16), parseInt("0x89", 16), 5],
-          "04309ed1007e77d1f119b85205bb779d",
+          "04309ed1007e77d1f119b85205bb779d"
         );
         console.log("defaultWcSettings", JSON.stringify(defaultWcSettings));
         const wc2Adapter = new WalletConnectV2Adapter({

@@ -1,7 +1,7 @@
 import { providerErrors } from "@metamask/rpc-errors";
 import { JRPCEngine, providerFromEngine } from "@toruslabs/openlogin-jrpc";
-import { CHAIN_NAMESPACES, CustomChainConfig, isHexStrict, WalletInitializationError } from "@web3auth/base";
-import { BaseProvider, BaseProviderConfig, BaseProviderState } from "@web3auth/base-provider";
+import { CHAIN_NAMESPACES, CustomChainConfig, isHexStrict, WalletInitializationError } from "@web3auth-mpc/base";
+import { BaseProvider, BaseProviderConfig, BaseProviderState } from "@web3auth-mpc/base-provider";
 
 import { ITorusWalletProvider } from "../../../interface";
 import { createSolanaMiddleware } from "../../../rpc/solanaRpcMiddlewares";

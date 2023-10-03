@@ -1,4 +1,4 @@
 {
-  "version": "7.0.3",
-  "npmClient": "npm"
+  "version": "2.3.0",
+  "npmClient": "yarn"
 }

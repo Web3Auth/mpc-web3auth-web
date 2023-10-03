@@ -1,8 +1,8 @@
 import type { JsonRpcError } from "@metamask/rpc-errors";
 import TorusEmbed, { PAYMENT_PROVIDER_TYPE, PaymentParams, TorusCtorArgs, TorusParams } from "@toruslabs/solana-embed";
-import { ADAPTER_EVENTS, CustomChainConfig, SafeEventEmitterProvider, UserInfo, WALLET_ADAPTERS } from "@web3auth/base";
-import { IPlugin, PLUGIN_NAMESPACES } from "@web3auth/base-plugin";
-import type { Web3AuthNoModal } from "@web3auth/no-modal";
+import { ADAPTER_EVENTS, CustomChainConfig, SafeEventEmitterProvider, UserInfo, WALLET_ADAPTERS } from "@web3auth-mpc/base";
+import { IPlugin, PLUGIN_NAMESPACES } from "@web3auth-mpc/base-plugin";
+import type { Web3AuthNoModal } from "@web3auth-mpc/no-modal";
 import log from "loglevel";
 
 import { SolanaWalletPluginError } from "./errors";

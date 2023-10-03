@@ -1,4 +1,4 @@
-import { CHAIN_NAMESPACES, IProvider, IWeb3Auth, UserInfo, WALLET_ADAPTER_TYPE } from "@web3auth/base";
+import { CHAIN_NAMESPACES, IProvider, IWeb3Auth, UserInfo, WALLET_ADAPTER_TYPE } from "@web3auth-mpc/base";
 
 export const PLUGIN_NAMESPACES = {
   ...CHAIN_NAMESPACES,

@@ -8,7 +8,7 @@ import {
   JRPCResponse,
   mergeMiddleware,
 } from "@toruslabs/openlogin-jrpc";
-import { CustomChainConfig } from "@web3auth/base";
+import { CustomChainConfig } from "@web3auth-mpc/base";
 
 export function createChainIdMiddleware(chainId: string): JRPCMiddleware<unknown, string> {
   return (req: JRPCRequest<unknown>, res: JRPCResponse<string>, next: JRPCEngineNextCallback, end: JRPCEngineEndCallback) => {

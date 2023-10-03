@@ -128,13 +128,13 @@ Please replace package and version with the appropriate package name
 #### `jsdeliver`
 
 ```js
-<script src="https://cdn.jsdelivr.net/npm/@web3auth/PACKAGE@VERSION"></script>
+<script src="https://cdn.jsdelivr.net/npm/@web3auth-mpc/PACKAGE@VERSION"></script>
 ```
 
 #### `unpkg`
 
 ```js
-<script src="https://unpkg.com/@web3auth/PACKAGE@VERSION"></script>
+<script src="https://unpkg.com/@web3auth-mpc/PACKAGE@VERSION"></script>
 ```
 
 ## 🩹 Examples

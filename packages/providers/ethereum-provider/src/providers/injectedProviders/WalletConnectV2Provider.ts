@@ -2,8 +2,8 @@ import { providerErrors } from "@metamask/rpc-errors";
 import { JRPCEngine, JRPCMiddleware, providerFromEngine } from "@toruslabs/openlogin-jrpc";
 import type { ISignClient, SignClientTypes } from "@walletconnect/types";
 import { getAccountsFromNamespaces, getChainsFromNamespaces, parseAccountId, parseChainId } from "@walletconnect/utils";
-import { CHAIN_NAMESPACES, CustomChainConfig, getChainConfig, log, WalletLoginError } from "@web3auth/base";
-import { BaseProvider, BaseProviderConfig, BaseProviderState } from "@web3auth/base-provider";
+import { CHAIN_NAMESPACES, CustomChainConfig, getChainConfig, log, WalletLoginError } from "@web3auth-mpc/base";
+import { BaseProvider, BaseProviderConfig, BaseProviderState } from "@web3auth-mpc/base-provider";
 
 import { createChainSwitchMiddleware, createEthMiddleware } from "../../rpc/ethRpcMiddlewares";
 import { AddEthereumChainParameter, IChainSwitchHandlers } from "../../rpc/interfaces";

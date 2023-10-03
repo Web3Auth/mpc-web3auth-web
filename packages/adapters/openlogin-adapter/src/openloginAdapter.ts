@@ -22,7 +22,7 @@ import {
   WalletInitializationError,
   WalletLoginError,
   Web3AuthError,
-} from "@web3auth/base";
+} from "@web3auth-mpc/base";
 import merge from "lodash.merge";
 
 import { getOpenloginDefaultOptions } from "./config";
@@ -126,7 +126,7 @@ export class OpenloginAdapter extends BaseAdapter<OpenloginLoginParams> {
     this.status = ADAPTER_STATUS.CONNECTING;
     this.emit(ADAPTER_EVENTS.CONNECTING, { ...params, adapter: WALLET_ADAPTERS.OPENLOGIN });
     try {
-      await this.connectWithProvider(params);
+      this.connectWithProvider(params);
       return this.provider;
     } catch (error: unknown) {
       log.error("Failed to connect with openlogin provider", error);

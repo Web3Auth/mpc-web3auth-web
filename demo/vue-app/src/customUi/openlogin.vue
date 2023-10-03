@@ -27,6 +27,7 @@
 </template>
 
 <script lang="ts">
+import { post } from "@toruslabs/http-helpers";
 import { ADAPTER_STATUS, CHAIN_NAMESPACES, CONNECTED_EVENT_DATA, WALLET_ADAPTERS } from "@web3auth/base";
 import { Web3AuthNoModal } from "@web3auth/no-modal";
 import { OpenloginAdapter, OpenloginLoginParams } from "@web3auth/openlogin-adapter";
@@ -63,7 +64,23 @@ export default defineComponent({
           clientId: config.clientId["testnet"],
         });
         this.subscribeAuthEvents(this.web3auth);
+        // eslint-disable-next-line @typescript-eslint/no-this-alias
         const openloginAdapter = new OpenloginAdapter({
+          tssSettings: {
+            useTSS: true,
+            tssGetPublic: async function () {
+              console.log("tssGetPublic called");
+              return Buffer.from("00", "hex");
+            },
+            tssSign: async (msgHash: Buffer) => {
+              openloginAdapter.openloginInstance.state;
+              console.log("tssSign called");
+              return { v: 0, r: Buffer.from("00", "hex"), s: Buffer.from("00", "hex") };
+            },
+            tssDataCallback: async (tssDataReader) => {
+              this.tssDataReader = tssDataReader;
+            },
+          },
           adapterSettings: {
             network: "testnet",
             clientId: config.clientId["testnet"],

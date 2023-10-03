@@ -1,4 +1,4 @@
-import type { IPhantomWalletProvider } from "@web3auth/solana-provider";
+import type { IPhantomWalletProvider } from "@web3auth-mpc/solana-provider";
 
 declare global {
   interface Window {

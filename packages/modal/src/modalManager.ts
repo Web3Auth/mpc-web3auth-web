@@ -11,11 +11,11 @@ import {
   LoginMethodConfig,
   WALLET_ADAPTER_TYPE,
   WALLET_ADAPTERS,
-} from "@web3auth/base";
-import { CommonJRPCProvider } from "@web3auth/base-provider";
-import { Web3AuthNoModal, Web3AuthNoModalOptions } from "@web3auth/no-modal";
-import type { OpenloginAdapter } from "@web3auth/openlogin-adapter";
-import { getAdapterSocialLogins, getUserLanguage, LOGIN_MODAL_EVENTS, LoginModal, OPENLOGIN_PROVIDERS, UIConfig } from "@web3auth/ui";
+} from "@web3auth-mpc/base";
+import { CommonJRPCProvider } from "@web3auth-mpc/base-provider";
+import { Web3AuthNoModal, Web3AuthNoModalOptions } from "@web3auth-mpc/no-modal";
+import type { OpenloginAdapter } from "@web3auth-mpc/openlogin-adapter";
+import { getAdapterSocialLogins, getUserLanguage, LOGIN_MODAL_EVENTS, LoginModal, OPENLOGIN_PROVIDERS, UIConfig } from "@web3auth-mpc/ui";
 
 import {
   defaultEvmDappModalConfig,

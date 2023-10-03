@@ -9,7 +9,7 @@ import {
   SafeEventEmitterProvider,
   WalletInitializationError,
   WalletProviderError,
-} from "@web3auth/base";
+} from "@web3auth-mpc/base";
 
 export interface BaseProviderState extends BaseState {
   chainId: string;

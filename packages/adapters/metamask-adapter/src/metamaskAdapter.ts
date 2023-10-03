@@ -21,8 +21,8 @@ import {
   WalletInitializationError,
   WalletLoginError,
   Web3AuthError,
-} from "@web3auth/base";
-import { BaseEvmAdapter } from "@web3auth/base-evm-adapter";
+} from "@web3auth-mpc/base";
+import { BaseEvmAdapter } from "@web3auth-mpc/base-evm-adapter";
 
 interface EthereumProvider extends IProvider {
   isMetaMask?: boolean;

@@ -1,5 +1,5 @@
 import type { EngineTypes, ProposalTypes } from "@walletconnect/types";
-import { CHAIN_NAMESPACES, ChainNamespaceType, IWalletConnectExtensionAdapter } from "@web3auth/base";
+import { CHAIN_NAMESPACES, ChainNamespaceType, IWalletConnectExtensionAdapter } from "@web3auth-mpc/base";
 
 import { IAdapterSettings } from "./interface";
 

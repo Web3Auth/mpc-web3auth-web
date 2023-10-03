@@ -1,4 +1,4 @@
-import { IProvider, RequestArguments } from "@web3auth/base";
+import { IProvider, RequestArguments } from "@web3auth-mpc/base";
 
 import { ISolanaWallet, TransactionOrVersionedTransaction } from "./interface";
 

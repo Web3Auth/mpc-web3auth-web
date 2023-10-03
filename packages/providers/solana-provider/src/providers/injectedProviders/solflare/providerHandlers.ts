@@ -1,7 +1,7 @@
 import { providerErrors } from "@metamask/rpc-errors";
 import { Connection } from "@solana/web3.js";
 import { JRPCRequest } from "@toruslabs/openlogin-jrpc";
-import { CustomChainConfig, SafeEventEmitterProvider } from "@web3auth/base";
+import { CustomChainConfig, SafeEventEmitterProvider } from "@web3auth-mpc/base";
 
 import { IBaseWalletProvider, SolflareWallet, TransactionOrVersionedTransaction } from "../../../interface";
 import { IProviderHandlers } from "../../../rpc/solanaRpcMiddlewares";

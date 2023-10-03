@@ -1,6 +1,6 @@
 import { JRPCEngine, JRPCMiddleware, providerFromEngine } from "@toruslabs/openlogin-jrpc";
-import { CHAIN_NAMESPACES, CustomChainConfig, WalletLoginError } from "@web3auth/base";
-import { BaseProvider, BaseProviderConfig, BaseProviderState } from "@web3auth/base-provider";
+import { CHAIN_NAMESPACES, CustomChainConfig, WalletLoginError } from "@web3auth-mpc/base";
+import { BaseProvider, BaseProviderConfig, BaseProviderState } from "@web3auth-mpc/base-provider";
 
 import { createConfigMiddleware } from "../../../rpc/JrpcClient";
 import { createSolanaMiddleware, IProviderHandlers } from "../../../rpc/solanaRpcMiddlewares";

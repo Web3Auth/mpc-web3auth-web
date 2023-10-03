@@ -7,8 +7,9 @@ import {
   JRPCRequest,
   JRPCResponse,
   providerFromEngine,
+  SafeEventEmitterProvider,
 } from "@toruslabs/openlogin-jrpc";
-import { CHAIN_NAMESPACES, CustomChainConfig, IBaseProvider, SafeEventEmitterProvider } from "@web3auth/base";
+import { CHAIN_NAMESPACES, CustomChainConfig, IBaseProvider } from "@web3auth-mpc/base";
 
 import { BaseProvider, BaseProviderConfig, BaseProviderState } from "./baseProvider";
 
@@ -88,12 +89,12 @@ export class CommonPrivateKeyProvider extends BaseProvider<BaseProviderConfig, C
   }
 
   private createPrivKeyMiddleware({ getPrivatekey }: { getPrivatekey: () => Promise<string> }): JRPCMiddleware<unknown, unknown> {
-    async function getPrivatekeyHandler(_: JRPCRequest<{ privateKey: string }[]>, res: JRPCResponse<unknown>): Promise<void> {
+    async function getPrivatekeyHandler(_: JRPCRequest<unknown>, res: JRPCResponse<unknown>): Promise<void> {
       res.result = await getPrivatekey();
     }
 
     return createScaffoldMiddleware({
-      private_key: createAsyncMiddleware(getPrivatekeyHandler) as JRPCMiddleware<unknown, unknown>,
-    });
+      private_key: createAsyncMiddleware(getPrivatekeyHandler),
+    }) as JRPCMiddleware<unknown, unknown>;
   }
 }

@@ -1,6 +1,6 @@
 import { get, post } from "@toruslabs/http-helpers";
 import { LANGUAGE_TYPE } from "@toruslabs/openlogin-utils";
-import { log, LoginMethodConfig, WALLET_ADAPTERS } from "@web3auth/base";
+import { log, LoginMethodConfig, WALLET_ADAPTERS } from "@web3auth-mpc/base";
 
 import { OPENLOGIN_PROVIDERS, OPENLOGIN_PROVIDERS_NAMES } from "./config";
 

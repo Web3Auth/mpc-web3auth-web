@@ -1,4 +1,4 @@
-import { ADAPTER_STATUS, log } from "@web3auth/base";
+import { ADAPTER_STATUS, log } from "@web3auth-mpc/base";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 

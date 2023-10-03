@@ -72,7 +72,7 @@ export class XrplPrivateKeyProvider extends BaseProvider<BaseProviderConfig, Xrp
       chainId: "loading",
     });
     this.configure({ chainConfig });
-    const { privateKey } = await this._providerEngineProxy.request<never, KeyPair>({ method: RPC_METHODS.GET_KEY_PAIR });
+    const { privateKey } = (await this._providerEngineProxy.request<never, KeyPair>({ method: RPC_METHODS.GET_KEY_PAIR })) as KeyPair;
     await this.setupProvider(privateKey);
   }
 

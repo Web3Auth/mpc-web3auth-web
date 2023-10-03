@@ -13,12 +13,12 @@ import {
 } from "@metamask/eth-sig-util";
 import { providerErrors } from "@metamask/rpc-errors";
 import { signMessage } from "@toruslabs/base-controllers";
-import { JRPCRequest } from "@toruslabs/openlogin-jrpc";
-import { isHexStrict, log, SafeEventEmitterProvider } from "@web3auth/base";
+import { JRPCRequest, SafeEventEmitterProvider } from "@toruslabs/openlogin-jrpc";
+import { isHexStrict, log } from "@web3auth-mpc/base";
 
 import { IProviderHandlers, MessageParams, TransactionParams, TypedMessageParams } from "../../rpc/interfaces";
-import { TransactionFormatter } from "./TransactionFormatter";
-import { validateTypedMessageParams } from "./TransactionFormatter/utils";
+import { TransactionFormatter } from "../TransactionFormatter";
+import { validateTypedMessageParams } from "../TransactionFormatter/utils";
 
 async function signTx(txParams: TransactionParams & { gas?: string }, privKey: string, txFormatter: TransactionFormatter): Promise<Buffer> {
   const finalTxParams = await txFormatter.formatTransaction(txParams);

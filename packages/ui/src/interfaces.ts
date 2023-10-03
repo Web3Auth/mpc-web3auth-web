@@ -1,6 +1,6 @@
 import { SafeEventEmitter } from "@toruslabs/openlogin-jrpc";
 import { WhiteLabelData } from "@toruslabs/openlogin-utils";
-import { BaseAdapterConfig, IWalletConnectExtensionAdapter, LoginMethodConfig, WALLET_ADAPTER_TYPE } from "@web3auth/base";
+import { BaseAdapterConfig, IWalletConnectExtensionAdapter, LoginMethodConfig, WALLET_ADAPTER_TYPE } from "@web3auth-mpc/base";
 
 // TODO: change whitelabel settings and pass ui whitelabel to openlogin.
 // capture whitelabel only once

@@ -1,5 +1,5 @@
 import type { EngineTypes, SignClientTypes } from "@walletconnect/types";
-import { BaseAdapterSettings } from "@web3auth/base";
+import { BaseAdapterSettings } from "@web3auth-mpc/base";
 
 export interface OpenOptions {
   uri: string;
