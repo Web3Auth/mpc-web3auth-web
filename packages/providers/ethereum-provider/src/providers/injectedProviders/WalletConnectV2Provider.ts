@@ -2,7 +2,7 @@ import { providerErrors } from "@metamask/rpc-errors";
 import { JRPCEngine, JRPCMiddleware, providerFromEngine } from "@toruslabs/openlogin-jrpc";
 import type { ISignClient, SignClientTypes } from "@walletconnect/types";
 import { getAccountsFromNamespaces, getChainsFromNamespaces, parseAccountId, parseChainId } from "@walletconnect/utils";
-import { CHAIN_NAMESPACES, CustomChainConfig, getChainConfig, log, WalletLoginError } from "@web3auth-mpc/base";
+import { CHAIN_NAMESPACES, CustomChainConfig, getChainConfig, log, WalletLoginError, WalletOperationsError } from "@web3auth-mpc/base";
 import { BaseProvider, BaseProviderConfig, BaseProviderState } from "@web3auth-mpc/base-provider";
 
 import { createChainSwitchMiddleware, createEthMiddleware } from "../../rpc/ethRpcMiddlewares";
@@ -173,16 +173,22 @@ export class WalletConnectV2Provider extends BaseProvider<BaseProviderConfig, Wa
       }
 
       if (event.name === "chainChanged") {
-        const { chainId: connectedChainId, rpcUrl } = data;
+        let connectedChainId: number;
+        if (typeof data === "number") {
+          connectedChainId = data;
+        } else {
+          connectedChainId = data.chainId;
+        }
+        if (!connectedChainId) throw WalletOperationsError.chainIDNotAllowed('ChainId not found in "chainChanged" event');
         const connectedHexChainId = `0x${connectedChainId.toString(16)}`;
 
         if (!this.checkIfChainIdAllowed(connectedHexChainId)) return;
         // Check if chainId changed and trigger event
         if (connectedHexChainId && this.state.chainId !== connectedHexChainId) {
-          const maybeConfig = getChainConfig(CHAIN_NAMESPACES.EIP155, connectedHexChainId) || {};
+          const maybeConfig = getChainConfig(CHAIN_NAMESPACES.EIP155, connectedHexChainId) || this.getChainConfig(connectedHexChainId) || {};
           // Handle rpcUrl update
           this.configure({
-            chainConfig: { ...maybeConfig, chainId: connectedHexChainId, rpcTarget: rpcUrl, chainNamespace: CHAIN_NAMESPACES.EIP155 },
+            chainConfig: { ...maybeConfig, chainId: connectedHexChainId, chainNamespace: CHAIN_NAMESPACES.EIP155 },
           });
           await this.setupEngine(connector);
         }
