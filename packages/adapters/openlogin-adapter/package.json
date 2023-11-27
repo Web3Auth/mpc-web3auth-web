@@ -41,9 +41,9 @@
   },
   "dependencies": {
     "@toruslabs/http-helpers": "^5.0.0",
-    "@toruslabs/openlogin": "^6.0.0",
+    "@toruslabs/openlogin": "^6.1.0",
     "@toruslabs/openlogin-ed25519": "^6.0.0",
-    "@toruslabs/openlogin-utils": "^6.0.0",
+    "@toruslabs/openlogin-utils": "^6.1.0",
     "@web3auth-mpc/base": "^3.0.0",
     "@web3auth-mpc/base-provider": "^3.0.0",
     "@web3auth-mpc/solana-provider": "^3.0.0",
