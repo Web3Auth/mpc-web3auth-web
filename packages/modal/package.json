@@ -9,14 +9,8 @@
   "jsdelivr": "dist/modal.umd.min.js",
   "types": "dist/types/index.d.ts",
   "author": "Torus Labs",
-  "scripts": {
-    "test": "mocha --config ../../.mocharc.json test/**.ts",
-    "test-debugger": "mocha --config ../../.mocharc.json --inspect-brk test/**.ts",
-    "dev": "torus-scripts start",
-    "build": "torus-scripts build",
-    "lint": "eslint --fix 'src/**/*.ts'",
-    "prepack": "npm run build",
-    "pre-commit": "lint-staged --cwd ."
+  "bugs": {
+    "url": "https://github.com/Web3Auth/Web3Auth/issues"
   },
   "dependencies": {
     "@web3auth-mpc/base": "^3.0.0",
@@ -35,41 +29,47 @@
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
     "@toruslabs/isomorphic-style-loader": "^5.3.3",
-    "@toruslabs/openlogin-utils": "^5.1.0",
+    "@toruslabs/openlogin-utils": "^6.0.0",
     "css-loader": "^6.8.1",
     "isomorphic-style-loader": "^5.3.2",
     "postcss-prefix-selector": "^1.16.0",
     "style-loader": "^3.3.3",
-    "tailwindcss": "^3.3.3",
+    "tailwindcss": "^3.3.5",
     "url-loader": "^4.1.1"
   },
-  "peerDependencies": {
-    "@babel/runtime": "7.x",
-    "@solana/web3.js": "^1.x"
+  "engines": {
+    "node": ">=18.x",
+    "npm": ">=9.x"
   },
   "files": [
     "dist",
     "src"
   ],
+  "keywords": [],
   "lint-staged": {
     "!(*d).ts": [
       "eslint --cache --fix",
       "prettier --write"
     ]
   },
+  "peerDependencies": {
+    "@babel/runtime": "7.x",
+    "@solana/web3.js": "^1.x"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Web3Auth/Web3Auth.git"
   },
-  "bugs": {
-    "url": "https://github.com/Web3Auth/Web3Auth/issues"
-  },
-  "keywords": [],
-  "publishConfig": {
-    "access": "public"
-  },
-  "engines": {
-    "node": ">=18.x",
-    "npm": ">=9.x"
+  "scripts": {
+    "build": "torus-scripts build",
+    "dev": "torus-scripts start",
+    "lint": "eslint --fix 'src/**/*.ts'",
+    "pre-commit": "lint-staged --cwd .",
+    "prepack": "npm run build",
+    "test": "mocha --config ../../.mocharc.json test/**.ts",
+    "test-debugger": "mocha --config ../../.mocharc.json --inspect-brk test/**.ts"
   }
 }
