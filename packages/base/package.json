@@ -1,6 +1,6 @@
 {
   "name": "@web3auth-mpc/base",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "homepage": "https://github.com/Web3Auth/mpc-web3auth-web#readme",
   "license": "ISC",
   "main": "dist/base.cjs.js",
