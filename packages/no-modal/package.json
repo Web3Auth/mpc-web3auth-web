@@ -35,9 +35,9 @@
     "@babel/runtime": "^7.x"
   },
   "dependencies": {
-    "@toruslabs/openlogin": "^5.1.1",
-    "@toruslabs/openlogin-jrpc": "^5.1.0",
-    "@toruslabs/openlogin-utils": "^5.1.0",
+    "@toruslabs/openlogin": "^6.1.0",
+    "@toruslabs/openlogin-jrpc": "^6.1.0",
+    "@toruslabs/openlogin-utils": "^6.1.0",
     "@web3auth-mpc/base": "^3.0.0",
     "@web3auth-mpc/base-plugin": "^3.0.0",
     "@web3auth-mpc/base-provider": "^3.0.0"
