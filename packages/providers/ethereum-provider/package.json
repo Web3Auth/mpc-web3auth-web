@@ -27,7 +27,7 @@
     "@metamask/rpc-errors": "^6.1.0",
     "@toruslabs/base-controllers": "^4.9.1",
     "@toruslabs/http-helpers": "^5.0.0",
-    "@toruslabs/openlogin-jrpc": "^6.1.0",
+    "@toruslabs/openlogin-jrpc": "https://gitpkg.now.sh/torusresearch/OpenLoginSdk/packages/openlogin-jrpc?debug/error-stack",
     "@walletconnect/legacy-types": "~2.0.0",
     "@walletconnect/utils": "^2.10.5",
     "@web3auth-mpc/base": "^3.1.0",
