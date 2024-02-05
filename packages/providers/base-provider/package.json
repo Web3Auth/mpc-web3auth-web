@@ -22,7 +22,7 @@
     "@metamask/rpc-errors": "^6.1.0",
     "@toruslabs/base-controllers": "^4.9.1",
     "@toruslabs/openlogin-jrpc": "https://gitpkg.now.sh/torusresearch/OpenLoginSdk/packages/openlogin-jrpc?debug/error-stack",
-    "@web3auth-mpc/base": "^3.1.0",
+    "@web3auth-mpc/base": "https://gitpkg.now.sh/Web3Auth/web3auth-mpc-web/packages/base?debug/error-stack",
     "json-rpc-random-id": "^1.0.1"
   },
   "devDependencies": {
