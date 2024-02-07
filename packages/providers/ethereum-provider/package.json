@@ -28,7 +28,6 @@
     "@toruslabs/base-controllers": "^4.9.1",
     "@toruslabs/http-helpers": "^5.0.0",
     "@toruslabs/openlogin-jrpc": "^6.1.0",
-    "@walletconnect/legacy-types": "~2.0.0",
     "@walletconnect/utils": "^2.10.5",
     "@web3auth-mpc/base": "^3.1.0",
     "@web3auth-mpc/base-provider": "^3.1.0",
@@ -39,7 +38,8 @@
   },
   "devDependencies": {
     "@types/bn.js": "^5.1.5",
-    "@types/json-rpc-random-id": "^1.0.3"
+    "@types/json-rpc-random-id": "^1.0.3",
+    "@walletconnect/types": "^2.11.0"
   },
   "peerDependencies": {
     "@babel/runtime": "7.x"

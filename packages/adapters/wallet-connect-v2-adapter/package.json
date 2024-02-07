@@ -41,14 +41,13 @@
     "@web3auth-mpc/base": "^3.1.0",
     "@web3auth-mpc/base-evm-adapter": "^3.1.0",
     "@web3auth-mpc/ethereum-provider": "^3.1.0",
-    "bn.js": "^5.2.1",
     "lodash.merge": "^4.6.2"
   },
   "devDependencies": {
     "@types/lodash.merge": "^4.6.9",
-    "@walletconnect/sign-client": "^2.10.5",
-    "@walletconnect/types": "^2.10.5",
-    "@walletconnect/utils": "^2.10.5"
+    "@walletconnect/sign-client": "^2.11.0",
+    "@walletconnect/types": "^2.11.0",
+    "@walletconnect/utils": "^2.11.0"
   },
   "lint-staged": {
     "!(*d).ts": [
