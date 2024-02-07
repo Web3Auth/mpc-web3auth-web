@@ -91,7 +91,7 @@ export class Web3Auth extends Web3AuthNoModal implements IWeb3AuthModal {
     super.checkInitRequirements();
     await this.loginModal.initModal();
     const providedChainConfig = this.options.chainConfig;
-
+    // TODO: get stuff from dashboard here
     // merge default adapters with the custom configured adapters.
     const allAdapters = [...new Set([...Object.keys(this.modalConfig.adapters || {}), ...Object.keys(this.walletAdapters)])];
 
@@ -125,6 +125,7 @@ export class Web3Auth extends Web3AuthNoModal implements IWeb3AuthModal {
           sessionTime: this.options.sessionTime,
           web3AuthNetwork: this.options.web3AuthNetwork,
           uiConfig: this.options.uiConfig,
+          useCoreKitKey: this.coreOptions.useCoreKitKey,
         });
 
         this.walletAdapters[adapterName] = ad;
@@ -137,6 +138,7 @@ export class Web3Auth extends Web3AuthNoModal implements IWeb3AuthModal {
           clientId: this.options.clientId,
           sessionTime: this.options.sessionTime,
           web3AuthNetwork: this.options.web3AuthNetwork,
+          useCoreKitKey: this.coreOptions.useCoreKitKey,
         });
 
         // if adapter doesn't have any chainConfig then we will set the chainConfig based of passed chainNamespace
@@ -231,6 +233,12 @@ export class Web3Auth extends Web3AuthNoModal implements IWeb3AuthModal {
       this.once(ADAPTER_EVENTS.ERRORED, (err: unknown) => {
         return reject(err);
       });
+      this.once(LOGIN_MODAL_EVENTS.MODAL_VISIBILITY, (visibility: boolean) => {
+        // modal is closed but user is not connected to any wallet.
+        if (!visibility && this.status !== ADAPTER_STATUS.CONNECTED) {
+          return reject(new Error("User closed the modal"));
+        }
+      });
     });
   }
 
@@ -313,6 +321,14 @@ export class Web3Auth extends Web3AuthNoModal implements IWeb3AuthModal {
           } catch (error) {
             log.error(`Error while disconnecting to wallet connect in core`, error);
           }
+        }
+        if (
+          !visibility &&
+          this.status === ADAPTER_STATUS.CONNECTED &&
+          (walletConnectStatus === ADAPTER_STATUS.READY || walletConnectStatus === ADAPTER_STATUS.CONNECTING)
+        ) {
+          log.debug("this stops wc adapter from trying to reconnect once proposal expires");
+          adapter.status = ADAPTER_STATUS.READY;
         }
       }
     });
